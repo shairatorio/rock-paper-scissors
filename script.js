@@ -6,6 +6,7 @@ function getComputerChoice() {
 
 let playerCount = 0;
 let computerCount = 0;
+const round = 5;
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
@@ -22,28 +23,42 @@ function playRound(playerSelection, computerSelection) {
     const computerScoreDisplay = document.getElementById("computerScore");
 
     const tie = document.createTextNode(`It's a tie!`);
-    const win = document.createTextNode(`You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`);
-    const lose = document.createTextNode(`You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}`);
-    const invalid = document.createTextNode(`Invalid input!`);
-    const playerScore = document.createTextNode(playerCount);
-    const computerScore = document.createTextNode(computerCount);
+    const win = document.createTextNode(`${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`);
+    const lose = document.createTextNode(`${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}`);
 
     result.innerHTML = "";
 
-    if (playerSelection === computerSelection) {
-        result.appendChild(tie);
-    } else if (winObj[playerSelection] === computerSelection) {
+    if (winObj[playerSelection] === computerSelection) {
         result.appendChild(win);
+
         playerCount++;
+        playerScoreDisplay.innerHTML = "";
+
+        const playerScore = document.createTextNode(playerCount);
         playerScoreDisplay.appendChild(playerScore);
+
     } else if (winObj[computerSelection] === playerSelection) {
         result.appendChild(lose);
+
         computerCount++;
+        computerScoreDisplay.innerHTML = "";
+
+        const computerScore = document.createTextNode(computerCount);
         computerScoreDisplay.appendChild(computerScore);
+
     } else {
-        result.appendChild(invalid);
+        result.appendChild(tie);
     }
 
+    switch(round) {
+        case playerCount:
+            alert("You Won! Congratulations!");
+            break;
+
+        case computerCount:
+            alert("You Lose!");
+            break;
+    }
 }
 
 let computerSelection = getComputerChoice();
@@ -54,37 +69,3 @@ btnList.forEach(function(btn) {
         playRound(e.target.value,computerSelection);
         });
 });
-
-function game() {
-    let playerCount = 0;
-    let computerCount = 0;
-
-    for (let i = 0; i < 5; i++) {
-
-        playerSelection = window.prompt('Enter the following: \nRock, Paper, or Scissors?');
-        let ans = playRound(playerSelection, computerSelection);
-
-        console.log("Player: " + playerSelection);
-        console.log("Computer: " + computerSelection);
-        console.log(ans);
-
-        if (ans.includes("Win")) {
-            playerCount++;
-        } else if (ans.includes("Lose")) {
-            computerCount++;
-        }
-    }
-
-    console.log("-------------------------------------");
-
-    console.log("Player Score: " + playerCount);
-    console.log("Computer Score: " + computerCount);
-
-    if (playerCount > computerCount) {
-        return "You Won! Congratulations!";
-    } else if (playerCount === computerCount) {
-        return "It's a tie!"
-    } else {
-        return "You Lose! Want to try again?"
-    }
-}
