@@ -1,4 +1,126 @@
-table, th, td {
+:root {
+    --color-light-gray: #E5E7EB;
+    --color-dark-gray: #333333;
+    --color-black: #1c1c1c;
+    --color-light-pink: #fddee6;
+
+    --font-style-poppins: 'Poppins', sans-serif;
+    --font-style-pacifico: 'Pacifico', sans-serif;
+    --font-style-audiowide: 'Audiowide', cursive;
+    --font-style-carterone: 'Carter One', cursive;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* border: 0.1px solid red; */
+}
+
+/* (100%/16px)*10 = 62.5% */
+html {
+    font-size: 62.5%; /* 10px */
+}
+
+body {
+    font-family: var(--font-style-carterone);
+    font-size: 1.6rem; /* 16px */
+    line-height: 1.4;
+    scroll-behavior: smooth;
+    min-width: 42rem; /* 420px */
+    background-color: var(--color-light-gray);
+}
+
+.title {
+    font-family: var(--font-style-audiowide);
+    text-align: center;
+    background-color: var(--color-dark-gray);
+    color: var(--color-light-pink);
+    padding: 3rem;
+    font-size: 5rem;
+}
+
+.fa-github {
+    color: var(--color-light-gray);
+    font-size: 2rem; /* 20px */
+    transition: transform 0.3s ease-in-out;
+}
+  
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* 10px */
+    width: 100%;
+    padding: 1rem; /* 10px */
+    color: var(--color-light-gray);
+    font-size: 1.5rem; /* 15px */
+    background-color: var(--color-dark-gray);
+    font-family: var(--font-style-poppins);
+}
+
+/* ================================================================= */
+/* Media Queries */
+
+/* 480px / 16px = 30em */
+/* Media query for screens with a maximum width of 480px */
+@media only screen and (max-width: 30em) {
+/* Styles for small mobile devices */
+    html {
+        font-size: 54%; 
+    }
+}
+    
+/* 481px / 16px = 30.0625em */
+/* 768px / 16px = 48em */
+/* Media query for screens with a minimum width of 481px and a maximum width of 768px */
+@media only screen and (min-width: 30.6em) and (max-width: 48em) {
+/* Styles for medium mobile devices and tablets */
+    html {
+        font-size: 56%; 
+    }
+}
+
+/* 769px / 16px = 48.0625em */
+/* 1024px / 16px = 64em */
+/* Media query for screens with a minimum width of 769px and a maximum width of 1024px */
+@media only screen and (min-width: 48.6em) and (max-width: 64em) {
+/* Styles for smaller desktop devices and laptops */
+    html {
+        font-size: 58%;
+    }
+}
+
+/* 1025px / 16px = 64.0625emem */
+/* Media query for screens with a minimum width of 1025px */
+@media only screen and (min-width: 64.6em) {
+/* Styles for larger desktop devices and wide screens */
+    html {
+        font-size: 60%; 
+    }
+}
+
+@media only screen
+and (max-width: 30em),
+(min-width: 30.6em) and (max-width: 48em), 
+(min-width: 48.6em) and (max-width: 64em),
+(min-width: 64.6em) {
+
+}
+
+
+
+
+/* table, th, td {
     border: 1px solid black;
     padding: 20px;
 }
@@ -9,4 +131,4 @@ table, th, td {
 
 button {
     margin-top: 20px;
-}
+} */
