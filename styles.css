@@ -3,6 +3,8 @@
     --color-dark-gray: #333333;
     --color-black: #1c1c1c;
     --color-light-pink: #fddee6;
+    --color-dark-blue: #101721;
+    --color-mid-blue: #212832;
 
     --font-style-poppins: 'Poppins', sans-serif;
     --font-style-pacifico: 'Pacifico', sans-serif;
@@ -16,13 +18,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 3px solid red;
+    /* border: 3px solid red; */
 }
 
 /* (100%/16px)*10 = 62.5% */
 html {
     font-size: 62.5%; /* 10px */
-    border: 5px solid green;
+    /* border: 5px solid green; */
 }
 
 body {
@@ -30,7 +32,7 @@ body {
     font-size: 1.6rem; /* 16px */
     min-width: 42rem; /* 420px */
     background-color: var(--color-light-gray);
-    border: 3px solid orange;
+    /* border: 3px solid orange; */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -47,21 +49,29 @@ body {
 }
 
 .main {
-    display: flex;
     flex-grow: 1;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
 }
 
 .container {
-    border: 3px solid blue;
-    width: 500px;
+    /* border: 3px solid blue; */
+    background-color: var(--color-dark-gray);
+    border-radius: 20px;
+    width: 600px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .section {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: space-evenly;
 }
 
 .playerHand, .computerHand {
@@ -72,6 +82,29 @@ body {
 .playerHand {
     transform: rotateY(180deg);
 }
+
+.msg, .playerName, .computerName,
+.playerScore, .computerScore {
+    color: var(--color-light-gray);
+    font-size: 25px;
+}
+
+.button {
+    padding: 10px;
+    width: 100px;
+    font-family: var(--font-style-carterone);
+    background-color: var(--color-light-pink);
+    border-style: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-light-gray);
+}
+
+
 
 .fa-github {
     color: var(--color-light-gray);
@@ -84,7 +117,6 @@ body {
 }
 
 .footer {
-    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: center;
