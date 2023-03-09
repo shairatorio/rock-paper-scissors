@@ -40,6 +40,44 @@ function getImage(playerImage,computerImage) {
     }
 }
 
+function getFinalResults() {
+    const finalWin =  document.createTextNode(`You won the game! Congratulations!`);
+    const finalLose = document.createTextNode(`You lost the game! Sorry!`);
+    const msg = document.createTextNode(`Let's play another one!`);
+
+    switch(round) {
+        case playerCount:
+            resultOne.innerHTML = "";
+            resultTwo.innerHTML = "";
+
+            resultOne.appendChild(finalWin);
+            resultTwo.appendChild(msg);
+
+            var buttons = document.getElementsByTagName('button');
+            for (var i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+            }
+
+            document.getElementById('btnPlay').disabled = false;
+            break;
+
+        case computerCount:
+            resultOne.innerHTML = "";
+            resultTwo.innerHTML = "";
+            
+            resultOne.appendChild(finalLose);
+            resultTwo.appendChild(msg);
+
+            var buttons = document.getElementsByTagName('button');
+            for (var i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+            }
+
+            document.getElementById('btnPlay').disabled = false;
+            break;
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -50,22 +88,26 @@ function playRound(playerSelection, computerSelection) {
         "paper": "rock"
     };
 
-    const result = document.getElementById("result");
+    const resultOne = document.getElementById("resultOne");
+    const resultTwo = document.getElementById("resultTwo");
     const playerScoreDisplay = document.getElementById("playerScore");
     const computerScoreDisplay = document.getElementById("computerScore");
 
+    const roundWin = document.createTextNode(`You win this round!`);
+    const roundLose = document.createTextNode(`You lose this round!`);
+    const no = document.createTextNode(`Oh no..`);
     const tie = document.createTextNode(`It's a tie!`);
     const win = document.createTextNode(`${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`);
     const lose = document.createTextNode(`${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}`);
 
-    result.innerHTML = "";
+    resultOne.innerHTML = "";
+    resultTwo.innerHTML = "";
 
-    getImage(playerSelection,computerSelection)
-    // console.log(playerSelection);
-    // console.log(computerSelection);
+    getImage(playerSelection,computerSelection);
 
     if (winObj[playerSelection] === computerSelection) {
-        result.appendChild(win);
+        resultOne.appendChild(roundWin);
+        resultTwo.appendChild(win);
 
         playerCount++;
         playerScoreDisplay.innerHTML = "";
@@ -74,7 +116,8 @@ function playRound(playerSelection, computerSelection) {
         playerScoreDisplay.appendChild(playerScore);
 
     } else if (winObj[computerSelection] === playerSelection) {
-        result.appendChild(lose);
+        resultOne.appendChild(roundLose);
+        resultTwo.appendChild(lose);
 
         computerCount++;
         computerScoreDisplay.innerHTML = "";
@@ -83,29 +126,24 @@ function playRound(playerSelection, computerSelection) {
         computerScoreDisplay.appendChild(computerScore);
 
     } else {
-        result.appendChild(tie);
-    }
+        resultOne.appendChild(no);
+        resultTwo.appendChild(tie);
+    }    
 
-    switch(round) {
-        case playerCount:
-            alert("You Won! Congratulations!");
-            break;
-
-        case computerCount:
-            alert("You Lose!");
-            break;
-    }
+    getFinalResults();
 }
 
-let computerSelection = getComputerChoice();
 let playerCount = 0;
 let computerCount = 0;
 const round = 5;
 
+document.getElementById('btnPlay').disabled = true;
 const btnList = document.querySelectorAll('button');
 
 btnList.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
-        playRound(e.target.value,computerSelection); // computerSelection not working
+        let computerSelection = getComputerChoice();
+
+        playRound(e.target.value,computerSelection);
         });
 });
