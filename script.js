@@ -8,9 +8,6 @@ function getImage(playerImage,computerImage) {
     const playerHandDisplay = document.getElementById("playerHand");
     const computerHandDisplay = document.getElementById("computerHand");
 
-    console.log(playerImage);
-    console.log(computerImage);
-
     switch(playerImage) {
         case 'rock':
             playerHandDisplay.src = '../resources/images/rock.png'
@@ -41,6 +38,9 @@ function getImage(playerImage,computerImage) {
 }
 
 function getFinalResults() {
+    const lostSound = document.querySelector('audio[data-key="lostGame"]')
+    const wonSound = document.querySelector('audio[data-key="wonGame"]');
+
     const finalWin =  document.createTextNode(`You won the game! Congratulations!`);
     const finalLose = document.createTextNode(`You lost the game! Sorry!`);
     const msg = document.createTextNode(`Let's play another one!`);
@@ -58,6 +58,8 @@ function getFinalResults() {
             buttons[i].disabled = true;
             }
 
+            wonSound.play();
+
             document.getElementById('btnPlay').disabled = false;
             break;
 
@@ -73,6 +75,8 @@ function getFinalResults() {
             buttons[i].disabled = true;
             }
 
+            lostSound.play();
+
             document.getElementById('btnPlay').disabled = false;
             break;
     }
@@ -87,6 +91,10 @@ function playRound(playerSelection, computerSelection) {
         "scissors": "paper",
         "paper": "rock"
     };
+
+    const tieSound = document.querySelector('audio[data-key="tie"]')
+    const loseSound = document.querySelector('audio[data-key="loseRound"]')
+    const winSound = document.querySelector('audio[data-key="winRound"]');
 
     const resultOne = document.getElementById("resultOne");
     const resultTwo = document.getElementById("resultTwo");
@@ -115,6 +123,8 @@ function playRound(playerSelection, computerSelection) {
         const playerScore = document.createTextNode(playerCount);
         playerScoreDisplay.appendChild(playerScore);
 
+        winSound.play();
+
     } else if (winObj[computerSelection] === playerSelection) {
         resultOne.appendChild(roundLose);
         resultTwo.appendChild(lose);
@@ -125,19 +135,27 @@ function playRound(playerSelection, computerSelection) {
         const computerScore = document.createTextNode(computerCount);
         computerScoreDisplay.appendChild(computerScore);
 
+        loseSound.play();
+
     } else {
         resultOne.appendChild(no);
         resultTwo.appendChild(tie);
+        
+        tieSound.play();
     }    
 
     getFinalResults();
 }
+
+const introSound = document.querySelector('audio[data-key="intro"]');
+introSound.play();
 
 let playerCount = 0;
 let computerCount = 0;
 const round = 5;
 
 document.getElementById('btnPlay').disabled = true;
+
 const btnList = document.querySelectorAll('button');
 
 btnList.forEach(function(btn) {
