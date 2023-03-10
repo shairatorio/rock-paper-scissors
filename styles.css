@@ -3,8 +3,6 @@
     --color-dark-gray: #333333;
     --color-black: #1c1c1c;
     --color-light-pink: #fddee6;
-    --color-dark-blue: #101721;
-    --color-mid-blue: #212832;
 
     --font-style-poppins: 'Poppins', sans-serif;
     --font-style-pacifico: 'Pacifico', sans-serif;
@@ -18,13 +16,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* border: 3px solid red; */
+    /* border: 1px solid red; */
 }
 
 /* (100%/16px)*10 = 62.5% */
 html {
     font-size: 62.5%; /* 10px */
-    /* border: 5px solid green; */
 }
 
 body {
@@ -32,11 +29,10 @@ body {
     font-size: 1.6rem; /* 16px */
     min-width: 42rem; /* 420px */
     background-color: var(--color-light-gray);
-    /* border: 3px solid orange; */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .title {
@@ -44,8 +40,8 @@ body {
     text-align: center;
     background-color: var(--color-dark-gray);
     color: var(--color-light-pink);
-    padding: 3rem;
-    font-size: 5rem;
+    padding: 3rem; /* 30px */
+    font-size: 5rem; /* 50px */
 }
 
 .main {
@@ -54,15 +50,13 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* border: 3px solid yellow; */
 }
 
 .container {
-    /* border: 3px solid blue; */
     background-color: var(--color-dark-gray);
-    border-radius: 20px;
-    width: 600px;
-    height: 650px;
+    border-radius: 2rem; /* 20px */
+    width: 60rem; /* 600px */
+    height: 70rem; /* 700px */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,48 +64,60 @@ body {
 
 .section {
     display: flex;
-    /* justify-content: center; */
     justify-content: space-evenly;
 }
 
-.section:first-child {
-    /* border: 2px solid black; */
+.section-one {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2.5rem; /* 25px */
 }
 
-.playerHand, .computerHand {
-    width: 200px;
-    height: 200px;
+.playerScore {
+    margin-right: 4.5rem; /* 45px */
+}
+
+.computerScore {
+    margin-right: 1.5rem; /* 15px */
+}
+
+.section-five {
+    margin-top: 5rem; /* 50px */
+}
+
+.section-six {
+    margin-top: 4rem; /* 40px */
+}
+
+.hands {
+    width: 20rem; /* 200px */
+    height: 20rem; /* 200px */
 }
 
 .playerHand {
     transform: rotateY(180deg);
 }
 
-.msg, .playerName, .computerName,
-.playerScore, .computerScore {
+.desc {
     color: var(--color-light-gray);
-    font-size: 25px;
+    font-size: 2.5rem; /* 25px */
 }
 
 .button {
-    padding: 10px;
-    width: 100px;
+    padding: 1rem; /* 10px */
+    width: 11rem; /* 110px */
     font-family: var(--font-style-carterone);
     background-color: var(--color-light-pink);
     border-style: none;
-    border-radius: 10px;
-    font-size: 15px;
+    border-radius: 1rem; /* 10px */
+    font-size: 1.5rem; /* 15px */
     cursor: pointer;
 }
 
 button:hover {
     background-color: var(--color-light-gray);
 }
-
-
 
 .fa-github {
     color: var(--color-light-gray);
@@ -144,7 +150,30 @@ button:hover {
 @media only screen and (max-width: 30em) {
 /* Styles for small mobile devices */
     html {
-        font-size: 54%; 
+        font-size: 35%; 
+        border: 2px solid red;
+    }
+
+    .container {
+        width: 60rem; /* 350px */
+        height: 80rem; /* 500px */
+        margin: 0.5rem; /* 5px */
+    }
+
+    .desc {
+        font-size: 2.5rem; /* 15px */
+    }
+
+    .button {
+        font-size: 2rem; /* 12px */
+        padding: 1.3rem; /* 8px */
+        width: 13rem; /* 80px */
+        margin: 0.5rem; /* 5px */
+    }
+
+    .hands {
+        width: 20rem; /* 120px */
+        height: 20rem; /* 120px */
     }
 }
     
@@ -154,7 +183,28 @@ button:hover {
 @media only screen and (min-width: 30.6em) and (max-width: 48em) {
 /* Styles for medium mobile devices and tablets */
     html {
-        font-size: 56%; 
+        font-size: 40%; 
+        border: 2px solid yellow;
+    }
+
+    .container {
+        width: 40rem; /* 400px */
+        height: 55rem; /* 550px */
+    }
+
+    .desc {
+        font-size: 2rem; /* 20px */
+    }
+
+    .button {
+        font-size: 1.2rem; /* 12px */
+        padding: 1rem; /* 10px */
+        width: 8.5rem; /* 85px */
+    }
+
+    .hands {
+        width: 12.5rem; /* 125px */
+        height: 12.5rem; /* 125px */
     }
 }
 
@@ -165,6 +215,17 @@ button:hover {
 /* Styles for smaller desktop devices and laptops */
     html {
         font-size: 58%;
+        border: 2px solid black;
+    }
+
+    .button {
+        font-size: 1.8rem; /* 18px */
+        padding: 1.2rem; /* 12px */
+        width: 12rem; /* 120px */
+    }
+
+    .container {
+        margin: 2rem; /* 20px */
     }
 }
 
@@ -175,27 +236,16 @@ button:hover {
     html {
         font-size: 60%; 
     }
+
+    .container {
+        margin: 2rem; /* 20px */
+    }
 }
 
-@media only screen
+/* @media only screen
 and (max-width: 30em),
 (min-width: 30.6em) and (max-width: 48em), 
 (min-width: 48.6em) and (max-width: 64em),
 (min-width: 64.6em) {
 
-}
-
-
-table, th, td {
-    border: 1px solid black;
-    padding: 20px;
-
-}
-
-#noneBorder {
-    border: 0;
-}
-
-button {
-    margin-top: 20px;
-}
+} */
