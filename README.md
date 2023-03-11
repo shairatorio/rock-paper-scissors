@@ -9,6 +9,6 @@ Check the website in this link!
 HTML • CSS • JS
 ## Screenshots
 
-![Desktop Page](https://github.com/shairatorio/rock-paper-scissors/blob/rps-ui/resources/images/desktop-page.png?raw=true)
+![Desktop Page](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/desktop-page.png?raw=true)
 
-![Mobile Page](https://github.com/shairatorio/rock-paper-scissors/blob/rps-ui/resources/images/mobile-page.png?raw=true)
+![Mobile Page](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/mobile-page.png?raw=true)
