@@ -151,7 +151,6 @@ button:hover {
 /* Styles for small mobile devices */
     html {
         font-size: 35%; 
-        border: 2px solid red;
     }
 
     .container {
@@ -184,7 +183,6 @@ button:hover {
 /* Styles for medium mobile devices and tablets */
     html {
         font-size: 40%; 
-        border: 2px solid yellow;
     }
 
     .container {
@@ -217,7 +215,6 @@ button:hover {
 /* Styles for smaller desktop devices and laptops */
     html {
         font-size: 58%;
-        border: 2px solid black;
     }
 
     .button {
