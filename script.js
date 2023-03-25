@@ -10,29 +10,29 @@ function getImage(playerImage,computerImage) {
 
     switch(playerImage) {
         case 'rock':
-            playerHandDisplay.src = '../resources/images/rock.png'
+            playerHandDisplay.src = './resources/images/rock.png'
             break;
 
         case 'paper':
-            playerHandDisplay.src = '../resources/images/paper.png'
+            playerHandDisplay.src = './resources/images/paper.png'
             break;
 
         case 'scissors':
-            playerHandDisplay.src = '../resources/images/scissors.png'
+            playerHandDisplay.src = './resources/images/scissors.png'
             break;
     }
 
     switch(computerImage) {
         case 'rock':
-            computerHandDisplay.src = '../resources/images/rock.png'
+            computerHandDisplay.src = './resources/images/rock.png'
             break;
 
         case 'paper':
-            computerHandDisplay.src = '../resources/images/paper.png'
+            computerHandDisplay.src = './resources/images/paper.png'
             break;
 
         case 'scissors':
-            computerHandDisplay.src = '../resources/images/scissors.png'
+            computerHandDisplay.src = './resources/images/scissors.png'
             break;
     }
 }
