@@ -60,7 +60,7 @@ function getFinalResults() {
 
             wonSound.play();
 
-            document.getElementById('btnPlay').disabled = false;
+            // document.getElementById('btnPlay').disabled = false;
             break;
 
         case computerCount:
@@ -77,7 +77,7 @@ function getFinalResults() {
 
             lostSound.play();
 
-            document.getElementById('btnPlay').disabled = false;
+            // document.getElementById('btnPlay').disabled = false;
             break;
     }
 }
@@ -154,7 +154,7 @@ let playerCount = 0;
 let computerCount = 0;
 const round = 5;
 
-document.getElementById('btnPlay').disabled = true;
+// document.getElementById('btnPlay').disabled = true;
 
 const btnList = document.querySelectorAll('button');
 
