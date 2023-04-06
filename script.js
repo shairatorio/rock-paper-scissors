@@ -1,3 +1,40 @@
+const playerHandDisplay = document.getElementById("playerHand");
+const computerHandDisplay = document.getElementById("computerHand");
+const playerScoreDisplay = document.getElementById("playerScore");
+const computerScoreDisplay = document.getElementById("computerScore");
+
+const finalWin =  document.createTextNode(`You won the game! Congratulations!`);
+const finalLose = document.createTextNode(`You lost the game! Sorry!`);
+const msg = document.createTextNode(`Let's play another one!`);
+const roundWin = document.createTextNode(`You win this round!`);
+const roundLose = document.createTextNode(`You lose this round!`);
+const no = document.createTextNode(`Oh no..`);
+const tie = document.createTextNode(`It's a tie!`);
+
+const introSound = document.querySelector('audio[data-key="intro"]');
+const lostSound = document.querySelector('audio[data-key="lostGame"]')
+const wonSound = document.querySelector('audio[data-key="wonGame"]');
+const tieSound = document.querySelector('audio[data-key="tie"]')
+const loseSound = document.querySelector('audio[data-key="loseRound"]')
+const winSound = document.querySelector('audio[data-key="winRound"]');
+
+const resultOne = document.getElementById("resultOne");
+const resultTwo = document.getElementById("resultTwo");
+
+const btnList = document.querySelectorAll('button');
+
+let playerCount = 0;
+let computerCount = 0;
+const round = 5;
+
+let winObj = {
+    "rock": "scissors",
+    "scissors": "paper",
+    "paper": "rock"
+};
+
+//improve buttons visual effects
+
 function getComputerChoice() {
     let choices = ['rock', 'paper', 'scissors'];
     let randomNumber = Math.floor(Math.random() * 3);
@@ -5,9 +42,6 @@ function getComputerChoice() {
 }
 
 function getImage(playerImage,computerImage) {
-    const playerHandDisplay = document.getElementById("playerHand");
-    const computerHandDisplay = document.getElementById("computerHand");
-
     switch(playerImage) {
         case 'rock':
             playerHandDisplay.src = './resources/images/rock.png'
@@ -37,131 +71,87 @@ function getImage(playerImage,computerImage) {
     }
 }
 
-function getFinalResults() {
-    const lostSound = document.querySelector('audio[data-key="lostGame"]')
-    const wonSound = document.querySelector('audio[data-key="wonGame"]');
+function clearDescription() {
+    resultOne.innerHTML = "";
+    resultTwo.innerHTML = "";
+}
 
-    const finalWin =  document.createTextNode(`You won the game! Congratulations!`);
-    const finalLose = document.createTextNode(`You lost the game! Sorry!`);
-    const msg = document.createTextNode(`Let's play another one!`);
+function appendDescription(descOne,descTwo) {
+    resultOne.appendChild(descOne);
+    resultTwo.appendChild(descTwo);
+}
 
-    switch(round) {
-        case playerCount:
-            resultOne.innerHTML = "";
-            resultTwo.innerHTML = "";
+function getFinalResults(desc) {
+    clearDescription();
+    appendDescription(desc,msg);
 
-            resultOne.appendChild(finalWin);
-            resultTwo.appendChild(msg);
-
-            var buttons = document.getElementsByTagName('button');
-            for (var i = 0; i < buttons.length; i++) {
-            buttons[i].disabled = true;
-            }
-
-            wonSound.play();
-
-            document.getElementById('btnPlay').disabled = false;
-            break;
-
-        case computerCount:
-            resultOne.innerHTML = "";
-            resultTwo.innerHTML = "";
-            
-            resultOne.appendChild(finalLose);
-            resultTwo.appendChild(msg);
-
-            var buttons = document.getElementsByTagName('button');
-            for (var i = 0; i < buttons.length; i++) {
-            buttons[i].disabled = true;
-            }
-
-            lostSound.play();
-
-            document.getElementById('btnPlay').disabled = false;
-            break;
+    for (let i = 0; i < 3; i++) {
+        btnList[i].disabled = true;
     }
 }
 
+function displayFinalResults() {
+    switch(round) {
+        case playerCount:
+            getFinalResults(finalWin);
+            audio(wonSound);
+        break;
+
+        case computerCount:  
+            getFinalResults(finalLose);
+            audio(lostSound)
+        break;
+    }
+}
+
+function audio(sound) {
+    sound.play();
+}
+
+//breakdown
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+    let player = playerSelection.toUpperCase();
+    let computer = computerSelection.toUpperCase();
 
-    let winObj = {
-        "rock": "scissors",
-        "scissors": "paper",
-        "paper": "rock"
-    };
+    const win = document.createTextNode(`${player} beats ${computer}`);
+    const lose = document.createTextNode(`${computer} beats ${player}`);
 
-    const tieSound = document.querySelector('audio[data-key="tie"]')
-    const loseSound = document.querySelector('audio[data-key="loseRound"]')
-    const winSound = document.querySelector('audio[data-key="winRound"]');
-
-    const resultOne = document.getElementById("resultOne");
-    const resultTwo = document.getElementById("resultTwo");
-    const playerScoreDisplay = document.getElementById("playerScore");
-    const computerScoreDisplay = document.getElementById("computerScore");
-
-    const roundWin = document.createTextNode(`You win this round!`);
-    const roundLose = document.createTextNode(`You lose this round!`);
-    const no = document.createTextNode(`Oh no..`);
-    const tie = document.createTextNode(`It's a tie!`);
-    const win = document.createTextNode(`${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`);
-    const lose = document.createTextNode(`${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}`);
-
-    resultOne.innerHTML = "";
-    resultTwo.innerHTML = "";
-
+    clearDescription();
     getImage(playerSelection,computerSelection);
 
     if (winObj[playerSelection] === computerSelection) {
-        resultOne.appendChild(roundWin);
-        resultTwo.appendChild(win);
+        appendDescription(roundWin,win);
 
         playerCount++;
         playerScoreDisplay.innerHTML = "";
- 
         const playerScore = document.createTextNode(playerCount);
         playerScoreDisplay.appendChild(playerScore);
 
-        winSound.play();
+        audio(winSound);
 
     } else if (winObj[computerSelection] === playerSelection) {
-        resultOne.appendChild(roundLose);
-        resultTwo.appendChild(lose);
+        appendDescription(roundLose,lose);
 
         computerCount++;
         computerScoreDisplay.innerHTML = "";
-
         const computerScore = document.createTextNode(computerCount);
         computerScoreDisplay.appendChild(computerScore);
 
-        loseSound.play();
+        audio(loseSound);
 
     } else {
-        resultOne.appendChild(no);
-        resultTwo.appendChild(tie);
-        
-        tieSound.play();
+        appendDescription(no,tie);        
+        audio(tieSound);
     }    
 
-    getFinalResults();
+    displayFinalResults();
 }
 
-const introSound = document.querySelector('audio[data-key="intro"]');
-introSound.play();
+audio(introSound);
 
-let playerCount = 0;
-let computerCount = 0;
-const round = 5;
-
-// document.getElementById('btnPlay').disabled = true;
-
-const btnList = document.querySelectorAll('button');
-
-btnList.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
+btnList.forEach((btn) => {
+    btn.addEventListener('click', e => {
         let computerSelection = getComputerChoice();
-
         playRound(e.target.value,computerSelection);
-        });
+    });
 });
