@@ -2,14 +2,8 @@ const playerHandDisplay = document.getElementById("playerHand");
 const computerHandDisplay = document.getElementById("computerHand");
 const playerScoreDisplay = document.getElementById("playerScore");
 const computerScoreDisplay = document.getElementById("computerScore");
-
-const finalWin =  document.createTextNode(`You won the game! Congratulations!`);
-const finalLose = document.createTextNode(`You lost the game! Sorry!`);
-const msg = document.createTextNode(`Let's play another one!`);
-const roundWin = document.createTextNode(`You win this round!`);
-const roundLose = document.createTextNode(`You lose this round!`);
-const no = document.createTextNode(`Oh no..`);
-const tie = document.createTextNode(`It's a tie!`);
+const resultOne = document.getElementById("resultOne");
+const resultTwo = document.getElementById("resultTwo");
 
 const introSound = document.querySelector('audio[data-key="intro"]');
 const lostSound = document.querySelector('audio[data-key="lostGame"]')
@@ -18,10 +12,15 @@ const tieSound = document.querySelector('audio[data-key="tie"]')
 const loseSound = document.querySelector('audio[data-key="loseRound"]')
 const winSound = document.querySelector('audio[data-key="winRound"]');
 
-const resultOne = document.getElementById("resultOne");
-const resultTwo = document.getElementById("resultTwo");
-
 const btnList = document.querySelectorAll('button');
+
+const finalWin =  `You won the game! Congratulations!`;
+const finalLose = `You lost the game! Sorry!`;
+const msg = `Let's play another one!`
+const roundWin = `You win this round!`;
+const roundLose = `You lose this round!`;
+const no = `Oh no..`;
+const tie = `It's a tie!`;
 
 let playerCount = 0;
 let computerCount = 0;
@@ -32,8 +31,6 @@ let winObj = {
     "scissors": "paper",
     "paper": "rock"
 };
-
-//improve buttons visual effects
 
 function getComputerChoice() {
     let choices = ['rock', 'paper', 'scissors'];
@@ -71,19 +68,13 @@ function getImage(playerImage,computerImage) {
     }
 }
 
-function clearDescription() {
-    resultOne.innerHTML = "";
-    resultTwo.innerHTML = "";
-}
-
-function appendDescription(descOne,descTwo) {
-    resultOne.appendChild(descOne);
-    resultTwo.appendChild(descTwo);
+function getDescription(descOne,descTwo) {
+    resultOne.textContent = descOne;
+    resultTwo.textContent = descTwo;
 }
 
 function getFinalResults(desc) {
-    clearDescription();
-    appendDescription(desc,msg);
+    getDescription(desc,msg);
 
     for (let i = 0; i < 3; i++) {
         btnList[i].disabled = true;
@@ -108,39 +99,40 @@ function audio(sound) {
     sound.play();
 }
 
-//breakdown
+function displayScore(count,scoreDisplay) {
+    count++;
+    scoreDisplay.textContent = count;
+}
+
 function playRound(playerSelection, computerSelection) {
     let player = playerSelection.toUpperCase();
     let computer = computerSelection.toUpperCase();
 
-    const win = document.createTextNode(`${player} beats ${computer}`);
-    const lose = document.createTextNode(`${computer} beats ${player}`);
+    const win = `${player} beats ${computer}`;
+    const lose = `${computer} beats ${player}`;
 
-    clearDescription();
     getImage(playerSelection,computerSelection);
 
     if (winObj[playerSelection] === computerSelection) {
-        appendDescription(roundWin,win);
+        getDescription(roundWin,win);
+
+        // displayScore(playerCount,playerScoreDisplay);
 
         playerCount++;
-        playerScoreDisplay.innerHTML = "";
-        const playerScore = document.createTextNode(playerCount);
-        playerScoreDisplay.appendChild(playerScore);
+        playerScoreDisplay.textContent = playerCount;
 
         audio(winSound);
 
     } else if (winObj[computerSelection] === playerSelection) {
-        appendDescription(roundLose,lose);
+        getDescription(roundLose,lose);
 
         computerCount++;
-        computerScoreDisplay.innerHTML = "";
-        const computerScore = document.createTextNode(computerCount);
-        computerScoreDisplay.appendChild(computerScore);
+        computerScoreDisplay.textContent = computerCount;
 
         audio(loseSound);
 
     } else {
-        appendDescription(no,tie);        
+        getDescription(no,tie);        
         audio(tieSound);
     }    
 
