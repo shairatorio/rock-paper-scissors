@@ -1,14 +1,26 @@
-# Rock Paper Scissors
+# Project: Rock Paper Scissors
 
-Created a simple game for my third project in [The Odin Project](https://www.theodinproject.com/) Curriculum.
+![Screenshot of desktop view](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/desktop-page.png?raw=true)
 
-Check the website in this link! 
-➮ [Rock Paper Scissors](https://shairatorio.github.io/rock-paper-scissors/)
-## Languanges
+Developed a Rock Paper Scissors Web Application using HTML, CSS and Javascript for my project in [The Odin Project](https://www.theodinproject.com/) Curriculum.
 
-HTML • CSS • JS
-## Screenshots
+🔗 Live preview ➮ [Rock Paper Scissors](https://shairatorio.github.io/rock-paper-scissors/)
 
-![Desktop Page](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/desktop-page.png?raw=true)
+## Overview
 
-![Mobile Page](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/mobile-page.png?raw=true)
+The RPS app that provide users with a fun and interactive way to play the classic game of Rock Paper Scissors. Users will be able to choose their move (rock, paper, or scissors) by clicking on a corresponding button on the screen, and the computer will randomly generate its own move.
+
+The application will then determine the winner based on the rules of the game: rock beats scissors, scissors beat paper, and paper beats rock.
+
+#### **Tools:**
+* Visual Studio Code
+* Gitbash terminal
+* Git and GitHub
+
+## Screenshot
+
+<details>
+  <summary>Mobile</summary>
+
+  ![Screenshot of mobile view](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/mobile-page.png?raw=true)
+</details>
