@@ -41,30 +41,20 @@ function getComputerChoice() {
 function getImage(playerImage,computerImage) {
     switch(playerImage) {
         case 'rock':
-            playerHandDisplay.src = './resources/images/rock.png'
-            break;
-
+            return playerHandDisplay.src = './resources/images/rock.png'
         case 'paper':
-            playerHandDisplay.src = './resources/images/paper.png'
-            break;
-
+            return playerHandDisplay.src = './resources/images/paper.png'
         case 'scissors':
-            playerHandDisplay.src = './resources/images/scissors.png'
-            break;
+            return playerHandDisplay.src = './resources/images/scissors.png'
     }
 
     switch(computerImage) {
         case 'rock':
-            computerHandDisplay.src = './resources/images/rock.png'
-            break;
-
+            return computerHandDisplay.src = './resources/images/rock.png'
         case 'paper':
-            computerHandDisplay.src = './resources/images/paper.png'
-            break;
-
+            return computerHandDisplay.src = './resources/images/paper.png'
         case 'scissors':
-            computerHandDisplay.src = './resources/images/scissors.png'
-            break;
+            return computerHandDisplay.src = './resources/images/scissors.png'
     }
 }
 
@@ -75,7 +65,6 @@ function getDescription(descOne,descTwo) {
 
 function getFinalResults(desc) {
     getDescription(desc,msg);
-
     for (let i = 0; i < 3; i++) {
         btnList[i].disabled = true;
     }
@@ -87,7 +76,6 @@ function displayFinalResults() {
             getFinalResults(finalWin);
             audio(wonSound);
         break;
-
         case computerCount:  
             getFinalResults(finalLose);
             audio(lostSound)
@@ -107,7 +95,6 @@ function displayScore(count,scoreDisplay) {
 function playRound(playerSelection, computerSelection) {
     let player = playerSelection.toUpperCase();
     let computer = computerSelection.toUpperCase();
-
     const win = `${player} beats ${computer}`;
     const lose = `${computer} beats ${player}`;
 
@@ -115,27 +102,18 @@ function playRound(playerSelection, computerSelection) {
 
     if (winObj[playerSelection] === computerSelection) {
         getDescription(roundWin,win);
-
-        // displayScore(playerCount,playerScoreDisplay);
-
         playerCount++;
         playerScoreDisplay.textContent = playerCount;
-
         audio(winSound);
-
     } else if (winObj[computerSelection] === playerSelection) {
         getDescription(roundLose,lose);
-
         computerCount++;
         computerScoreDisplay.textContent = computerCount;
-
         audio(loseSound);
-
     } else {
         getDescription(no,tie);        
         audio(tieSound);
     }    
-
     displayFinalResults();
 }
 
