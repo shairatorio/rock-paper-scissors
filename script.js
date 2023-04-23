@@ -1,16 +1,16 @@
-const playerHandDisplay = document.getElementById("playerHand");
-const computerHandDisplay = document.getElementById("computerHand");
-const playerScoreDisplay = document.getElementById("playerScore");
-const computerScoreDisplay = document.getElementById("computerScore");
-const resultOne = document.getElementById("resultOne");
-const resultTwo = document.getElementById("resultTwo");
+const playerHandDisplay = document.getElementById('playerHand');
+const computerHandDisplay = document.getElementById('computerHand');
+const playerScoreDisplay = document.getElementById('playerScore');
+const computerScoreDisplay = document.getElementById('computerScore');
+const resultOne = document.getElementById('resultOne');
+const resultTwo = document.getElementById('resultTwo');
 
-const introSound = document.querySelector('audio[data-key="intro"]');
-const lostSound = document.querySelector('audio[data-key="lostGame"]')
-const wonSound = document.querySelector('audio[data-key="wonGame"]');
-const tieSound = document.querySelector('audio[data-key="tie"]')
-const loseSound = document.querySelector('audio[data-key="loseRound"]')
-const winSound = document.querySelector('audio[data-key="winRound"]');
+const introSound = document.querySelector(`audio[data-key='intro']`);
+const lostSound = document.querySelector(`audio[data-key='lostGame']`)
+const wonSound = document.querySelector(`audio[data-key='wonGame']`);
+const tieSound = document.querySelector(`audio[data-key='tie']`)
+const loseSound = document.querySelector(`audio[data-key='loseRound']`)
+const winSound = document.querySelector(`audio[data-key='winRound']`);
 
 const btnList = document.querySelectorAll('button');
 
@@ -27,9 +27,9 @@ let computerCount = 0;
 const round = 5;
 
 let winObj = {
-    "rock": "scissors",
-    "scissors": "paper",
-    "paper": "rock"
+    'rock': 'scissors',
+    'scissors': 'paper',
+    'paper': 'rock'
 };
 
 function getComputerChoice() {
@@ -99,7 +99,6 @@ function playRound(playerSelection, computerSelection) {
     const lose = `${computer} beats ${player}`;
 
     getImage(playerSelection,computerSelection);
-
     if (winObj[playerSelection] === computerSelection) {
         getDescription(roundWin,win);
         playerCount++;
