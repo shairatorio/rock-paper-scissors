@@ -47,7 +47,6 @@ function getImage(playerImage,computerImage) {
         case 'scissors':
             return playerHandDisplay.src = './resources/images/scissors.png'
     }
-
     switch(computerImage) {
         case 'rock':
             return computerHandDisplay.src = './resources/images/rock.png'
