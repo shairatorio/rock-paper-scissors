@@ -1,6 +1,6 @@
 # Project: Rock Paper Scissors
 
-![Screenshot of desktop view](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/desktop-page.png?raw=true)
+![Screenshot of Desktop View](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/desktop-page.png?raw=true)
 
 Developed a Rock Paper Scissors Web Application using HTML, CSS and Javascript for my project in [The Odin Project](https://www.theodinproject.com/) Curriculum.
 
@@ -12,7 +12,20 @@ The RPS app that provide users with a fun and interactive way to play the classi
 
 The application will then determine the winner based on the rules of the game: rock beats scissors, scissors beat paper, and paper beats rock.
 
-#### **Tools:**
+The game is designed to play five rounds only, providing a quick and simple game-play experience for the user.
+
+## Features
+
+* **Rock Button** - This button allows the player to select "rock" as their choice of move for a round of the game.
+
+* **Paper Button** - This button allows the player to select "paper" as their choice of move for a round of the game.
+
+* **Scissors Button** - This button allows the player to select "scissors" as their choice of move for a round of the game.
+
+* **Play Again Button** - This button allows the player to start a new game at any point during the game, regardless of whether or not they have completed the five rounds.
+
+## Tools
+
 * Visual Studio Code
 * Gitbash terminal
 * Git and GitHub
@@ -22,5 +35,5 @@ The application will then determine the winner based on the rules of the game: r
 <details>
   <summary>Mobile</summary>
 
-  ![Screenshot of mobile view](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/mobile-page.png?raw=true)
+  ![Screenshot of Mobile View](https://github.com/shairatorio/rock-paper-scissors/blob/main/resources/images/mobile-page.png?raw=true)
 </details>
